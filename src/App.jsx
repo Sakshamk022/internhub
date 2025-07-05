@@ -1,5 +1,7 @@
+import React from 'react';
+
 import { ClerkProvider, RedirectToSignIn, SignedIn, SignedOut } from '@clerk/clerk-react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import InternDashboard from './pages/InternDashboard';
 import RecruiterDashboard from './pages/RecruiterDashboard';
 
@@ -11,6 +13,8 @@ function App() {
       <BrowserRouter>
         <SignedIn>
           <Routes>
+            {/* Add this default route */}
+            <Route path="/" element={<Navigate to="/intern" />} />
             <Route path="/intern" element={<InternDashboard />} />
             <Route path="/recruiter" element={<RecruiterDashboard />} />
           </Routes>
